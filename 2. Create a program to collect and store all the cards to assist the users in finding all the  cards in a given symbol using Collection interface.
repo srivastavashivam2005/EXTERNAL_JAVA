@@ -1,0 +1,22 @@
+import java.util.*;
+class Card {
+String symbol, value;
+Card(String symbol, String value) {
+this.symbol = symbol;
+this.value = value; }
+public String toString() {
+return value + " of " + symbol; } }
+class Main {
+public static void main(String[] args) {
+Collection<Card> cards = new ArrayList<>();
+String[] symbols = {"Hearts", "Spades", "Clubs", "Diamonds"};
+String[] values = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+for (String s : symbols)
+for (String v : values)
+cards.add(new Card(s, v));
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter symbol: ");
+String sym = sc.next();
+for (Card c : cards)
+if (c.symbol.equalsIgnoreCase(sym))
+System.out.println(c); } }
