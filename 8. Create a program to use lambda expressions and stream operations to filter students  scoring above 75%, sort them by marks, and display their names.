@@ -1,0 +1,15 @@
+import java.util.*;
+import java.util.stream.*;
+class Stu {
+String n; int m;
+Stu(String n, int m) { this.n = n; this.m = m; }}
+class Main {
+public static void main(String[] a) {
+Arrays.asList(
+new Stu("A", 80),
+new Stu("B", 60),
+new Stu("C", 90)
+).stream()
+.filter(x -> x.m > 75)
+.sorted((p, q) -> q.m - p.m)
+.forEach(x -> System.out.println(x.n + " " + x.m)); }}
