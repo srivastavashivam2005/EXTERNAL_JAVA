@@ -1,0 +1,19 @@
+class Counter {
+int seats = 5;
+synchronized void book(String name, int n) {
+if (seats >= n) {
+System.out.println(name + " booked " + n + " seat(s)");
+seats -= n;
+} else System.out.println("Sorry " + name + ", not enough seats");}}
+class Booking extends Thread {
+Counter c; int n;
+Booking(Counter c, String name, int n, int p) {
+super(name); this.c = c; this.n = n; setPriority(p);}
+public void run() { c.book(getName(), n); } }
+public class    Main {
+public static void main(String[] a) {
+Counter c = new Counter();
+Booking b1 = new Booking(c, "VIP", 2, Thread.MAX_PRIORITY);
+Booking b2 = new Booking(c, "User1", 2, Thread.NORM_PRIORITY);
+Booking b3 = new Booking(c, "User2", 2, Thread.MIN_PRIORITY);
+b1.start(); b2.start(); b3.start(); } }
