@@ -1,0 +1,17 @@
+import java.util.*;
+import java.util.stream.*;
+class P {
+String c; double p;
+P(String c, double p) { this.c = c; this.p = p; } }
+class Main {
+public static void main(String[] a) {
+var L = Arrays.asList(
+new P("A", 100),
+new P("A", 200),
+new P("B", 150) );
+L.stream()
+.collect(Collectors.groupingBy(x -> x.c))
+.forEach((k, v) -> System.out.println(k + " Max:" +
+v.stream().mapToDouble(x -> x.p).max().getAsDouble()));
+System.out.println("Avg:" +
+L.stream().mapToDouble(x -> x.p).average().getAsDouble());} }
