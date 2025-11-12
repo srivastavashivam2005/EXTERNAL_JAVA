@@ -1,0 +1,17 @@
+import java.sql.*;
+class S{int i;String n,d;double m;
+S(int i,String n,String d,double m){
+this.i=i;this.n=n;this.d=d;this.m=m;}}
+class D{
+Connection c;
+D()throws Exception{c=DriverManager.getConnection(
+"jdbc:mysql://localhost/test","root","root");}
+void add(S s)throws Exception{
+var p=c.prepareStatement("insert into student values(?,?,?,?)");
+p.setInt(1,s.i);p.setString(2,s.n);
+p.setString(3,s.d);p.setDouble(4,s.m);p.execute();}}
+class Main{
+public static void main(String[]a)throws Exception{
+Class.forName("com.mysql.cj.jdbc.Driver");
+new D().add(new S(1,"XYZ","CSE",90));
+System.out.println("Added");}}
