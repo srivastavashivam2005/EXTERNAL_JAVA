@@ -1,0 +1,17 @@
+import java.sql.*;
+import java.util.*;
+class Main{
+ public static void main(String[]a)throws Exception{
+ var s=new Scanner(System.in);
+ Class.forName("com.mysql.cj.jdbc.Driver");
+ var c=DriverManager.getConnection(
+"jdbc:mysql://localhost/test","root","root");
+ System.out.println("1Add 2View 3Upd 4Del");
+ int ch=s.nextInt();
+ var st=c.createStatement();
+ if(ch==1)st.execute("insert into Product values(1,'Pen',10,5)");
+ if(ch==2){var r=st.executeQuery("select * from Product");
+ while(r.next()) System.out.println(r.getInt(1)+" "+r.getString(2));}
+ if(ch==3)st.execute("update Product set Price=20 where ProductID=1");
+ if(ch==4)st.execute("delete from Product where ProductID=1");
+ c.close();} }
