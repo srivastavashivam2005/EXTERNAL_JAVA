@@ -1,0 +1,13 @@
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+List<Integer> list = new ArrayList<>();
+System.out.println("Enter numbers separated by space: ");
+String[] nums = sc.nextLine().split(" ");
+for (String s : nums)
+list.add(Integer.parseInt(s)); 
+int sum = 0;
+for (Integer i : list)
+sum += i; 
+System.out.println("Sum = " + sum);} }
