@@ -1,0 +1,12 @@
+import java.util.*;
+class Emp {
+String n; int a; double s;
+Emp(String n, int a, double s) { this.n = n; this.a = a; this.s = s; } }
+class Main {
+public static void main(String[] z) {
+var l = Arrays.asList(
+new Emp("A", 22, 50000),
+new Emp("B", 25, 60000),
+new Emp("C", 21, 40000) );
+l.sort((x, y) -> x.n.compareTo(y.n));
+l.forEach(e -> System.out.println(e.n + " " + e.s));}}
