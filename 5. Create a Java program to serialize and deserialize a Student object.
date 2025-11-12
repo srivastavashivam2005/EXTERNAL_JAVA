@@ -1,0 +1,19 @@
+import java.io.*;
+class Student implements Serializable {
+int id; String name; double marks;
+Student(int i, String n, double m)
+{id=i;name=n;marks=m;}
+public String toString(){
+return id+" "+name+" "+marks;} }
+public class Main {
+public static void main(String[] a){
+try{
+Student s=new Student(1,"Shivam",90.5);
+ObjectOutputStream o=new ObjectOutputStream
+(new FileOutputStream("s.txt"));
+o.writeObject(s); o.close();
+ObjectInputStream i=new ObjectInputStream
+(new FileInputStream("s.txt"));
+System.out.println((Student)i.readObject());
+i.close();
+}catch(Exception e){System.out.println(e);} } }
